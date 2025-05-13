@@ -3,13 +3,192 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
-width:100%;
+width:100vh;
 height:200px;
 }
+main{
+background-color: rgb(252, 241, 228);
 
+}
 #header_section #logo{
 width: 130px;
 height: auto;  
 margin: 20px 10px ;
 }
 
+
+#main_section{
+    display: grid;
+    justify-content: start;
+    max-width: 100%;
+}
+
+
+
+
+
+
+#main_section-header_img  img{
+
+object-fit:cover;
+width: 100vh;
+height:200px;
+
+
+}
+
+#header_small_bild img{
+
+    width: 120px;
+    height:120px;
+  justify-content: center;
+  margin-left: 450px;
+  margin-top: -70px;
+    border-radius: 50%;
+}
+
+#schoko_image_name p{
+font-size: 26px;
+margin-left: 20px;
+margin-top: -40px;
+font-weight: 600;
+color:rgb(26, 26, 26) ;
+    
+}
+
+#bewertung_text h4{
+
+    color:orange;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+#menu{
+     display: flex;
+    flex-direction: row;
+     justify-content: start;
+ 
+    align-items: center;
+    margin-top: 20px;
+    background-color: rgb(232, 210, 182);
+    padding: 10px;
+}
+
+
+
+#nav_links a{
+   
+    font-size: 18px;
+    color:rgb(29, 27, 24);
+      margin-right:  20px;
+      margin-left: 10px;
+     
+   
+   
+}
+#menu a:hover{
+border-bottom: 1px solid orange;
+}
+
+#menuContainer{
+display: flex;
+justify-content: space-between;
+align-items: start;
+flex-direction: column;
+margin-left: 20px; 
+
+
+}
+
+
+.menu-item{
+    display: flex;
+    flex-direction: column;
+border: 1px solid rgb(136, 134, 134);
+background-color:rgb(247, 235, 220);
+width:100vh;
+gap: 1rem;
+margin-top: 10px;
+flex-wrap: wrap;
+margin-bottom: 10px;
+padding: 10px;
+border-radius: 5px;
+
+}
+
+.menu-item:hover{
+
+    background-color: rgb(231, 215, 194);
+    cursor: pointer;
+}
+
+.menu-item h3{
+    font-size: 22px;
+
+}
+.menu-item p{
+font-size: 18px;
+}
+
+
+
+
+.price{
+color:orangered;
+font-size: 18px;
+
+}
+.plus-image{
+    width: 30px;
+   margin-bottom: 20px;
+
+}
+
+.last {
+  margin-left: auto;
+  margin-bottom: -20px;
+}
+
+#menu_pic{
+ display: flex;
+   justify-content: start;
+   align-items: center;
+   margin: 0 20px;
+}
+
+#menu_pic img{
+    object-fit: cover;
+    height: 150px;
+    width: 100vh;
+
+}
+
+#menu_pic_unten{
+ display: flex;
+   justify-content: start;
+   align-items: center;
+   margin: 0 20px;
+
+}
+#menu_pic_unten img{
+    object-fit: cover;
+    height: 150px;
+    width: 100vh;
+}
+
+
+
+footer{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+width:100vh;
+height:100px;
+}  
+
+
+#footer_section{
+
+
+}
