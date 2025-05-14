@@ -10,7 +10,7 @@ height:200px;
 main{
     display: flex;
 background-color: rgb(252, 241, 228);
- height: calc(100vh - 300px);
+ height:100vh;
   overflow: hidden;
    padding: 0;
   margin: 0;
@@ -42,7 +42,7 @@ margin: 20px 10px ;
 #main_section-header_img  img{
 
 object-fit:cover;
-width: 100vh;
+width: 100vw;
 height:200px;
 
 
@@ -50,10 +50,10 @@ height:200px;
 
 #header_small_bild img{
 
-    width: 120px;
-    height:120px;
+    width: 140px;
+    height:140px;
   justify-content: center;
-  margin-left: 350px;
+  margin-left: 50%;
   margin-top: -70px;
     border-radius: 50%;
 }
@@ -80,10 +80,10 @@ color:rgb(26, 26, 26) ;
      justify-content: start;
     align-items: center;
     margin-top: 20px;
-    background-color: rgb(232, 210, 182);
+    background-color: rgb(236, 219, 198);
     padding: 10px;
-    max-width: 950px;
-    overflow-y: auto;
+    width: 100%;
+    
 }
 
 
@@ -125,7 +125,6 @@ margin-left: 20px;
 border: 1px solid rgb(136, 134, 134);
 background-color:rgb(247, 235, 220);
  width: 100%; 
-max-width: 950px;
 gap: 1rem;
 margin-top: 10px;
 flex-wrap: wrap;
@@ -194,14 +193,14 @@ font-size: 18px;
     object-fit: cover;
     height: 150px;
    width: 100%;
-    max-width: 900px;
+  
 }
 
 #warenkorb_section{
 position: sticky;
 top: 0;
 height: 100vh;
-width: 300px;
+width: 350px;
 border: 2px solid rgb(221, 194, 106);
 background-color:rgb(247, 235, 220);
   overflow-y: auto;
@@ -209,10 +208,6 @@ background-color:rgb(247, 235, 220);
 
 }
 
-#basket{
-
-height: 300px;
-}
 
 footer {
   height: 100px;
@@ -242,6 +237,8 @@ footer * {
 margin:20px;
 text-decoration: none;
 
+
+
 }
 
 
@@ -249,10 +246,15 @@ ul {
   list-style-type: none;
 }
 
-
-hr {
+#hr{
 border: none;
-height: 2px;
-color: #333;
-background-color: #333;
+height: 30px;
+background: linear-gradient(to right, #f09, #3023AE); 
+
+}
+
+#bsk{
+border-bottom: 1px solid rgb(215, 187, 60);
+   
+    padding: 0 80px;
 }

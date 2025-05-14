@@ -117,23 +117,26 @@ const menuItems= [
 
 
 function onload() { 
-filterMenu('pizza');
+filterMenu('pizza'); //Երբ էջը բացվում է, այս ֆունկցիան ցույց է տալիս միայն պիցցաները։
+
 }
   function filterMenu(type) {
-  const container = document.getElementById("menuContainer");
+  const container = document.getElementById("menuContainer"); //Այս ֆունկցիան վերցնում է ապրանքների ամբողջական ցուցակը 
 
-  const filtered = menuItems.filter(item => item.type === type);
+  const filtered = menuItems.filter(item => item.type === type);//և թողնում միայն այն ապրանքները, որոնք համապատասխանում են տրված տեսակի (pizza, dessert, drink)։
 
   const html = filtered.map((item, index) => `
     <div class="menu-item">
+    <a href="#" onclick="warenKorb('${item.name}')"> 
       <h3><strong>${item.name}</strong></h3>
       <p>${item.description}</p>
       <strong class="price">${item.price.toFixed(2)} €</strong>
       <div class="plus last">
-        <a href="#" onclick="warenKorb('${item.name}')">
+        
           <img src="./assets/Favicon/plus.png" alt="" class="plus-image">
-        </a>
+        
       </div>
+      </a>
     </div>
   `).join("");
 
@@ -141,11 +144,17 @@ filterMenu('pizza');
 }
 
 function warenKorb(name) {
-  const item = menuItems.find(i => i.name.trim() === name.trim());
-  if (item) {
-    basketItems.push(item);
-    renderBasket();
+  const item = menuItems.find(i => i.name.trim() === name.trim());//որոնում ենք ամբողջ մենյուում այն ապրանքը, որի անունը համընկնում է տրված անվան հետ։
+  if (!item) return;
+
+  const existingItem = basketItems.find(i => i.name === item.name); //Ստուգում ենք՝ արդյո՞ք ապրանքը արդեն զամբյուղում կա։
+  if (existingItem) {
+    existingItem.quantity += 1; //Եթե կա՝ Քանակը 1-ով ավելացնում ենք։
+  } else {
+    basketItems.push({ ...item, quantity: 1 }); //Ավելացնում ենք նոր ապրանք՝ quantity: 1 հատկությամբ։
   }
+
+  renderBasket(); // Թարմացնում ենք զամբյուղի ցուցադրումը։
 }
 
 function renderBasket() {
@@ -158,13 +167,51 @@ function renderBasket() {
 
   let html = "<ul>";
   let total = 0;
+
   basketItems.forEach(item => {
-    html += `<li>${item.name} - ${item.price.toFixed(2)}€</li>`;
-    total += item.price;
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
+    html += `
+      
+        ${item.name} - ${item.price.toFixed(2)}€ x ${item.quantity} = ${itemTotal.toFixed(2)}€
+        <li><button onclick="decreaseQuantity('${item.name}')">➖</button>
+        <button onclick="increaseQuantity('${item.name}')">➕</button>
+        <button onclick="removeFromBasket('${item.name}')">🗑️</button>
+      </li>
+    `;
   });
 
   html += "</ul>";
-
-  html += `<p><strong>Gesamt: ${total.toFixed(2)}€</strong></p>`;
+  html  += `<span id="hr"></span> `;
+  html += `<p><strong>Total: ${total.toFixed(2)}€</strong></p>`;
   basket.innerHTML = html;
 }
+
+function increaseQuantity(name) {
+  const item = basketItems.find(i => i.name === name);
+  if (item) {
+    item.quantity += 1;
+    renderBasket();
+  }
+}
+
+function decreaseQuantity(name) {
+  const index = basketItems.findIndex(i => i.name === name);
+  if (index > -1) {
+    basketItems[index].quantity -= 1;
+    if (basketItems[index].quantity <= 0) {
+      basketItems.splice(index, 1); // Ջնջում է, եթե քանակը 0-ից պակաս է
+    }
+    renderBasket();
+  }
+}
+
+function removeFromBasket(name) {
+  const index = basketItems.findIndex(i => i.name === name);
+  if (index > -1) {
+    basketItems.splice(index, 1);
+    renderBasket();
+  }
+}
+

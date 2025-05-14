@@ -4,16 +4,26 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     text-decoration: none;
-    max-width: 100%;
+    font-size: 22px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 html, body {
   
   height: auto;
-  background-color:#dc16a7;
-  overflow: hidden; 
-   overflow-y: hidden;
+  background-color:#da7211;
+  overflow-x: hidden;
+   overflow-y: auto;
 }
 
+#main_section::-webkit-scrollbar,
+#warenkorb_section::-webkit-scrollbar {
+  display: none;
+}
     
+#main_section,
+#warenkorb_section {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow-y: auto;
+}
