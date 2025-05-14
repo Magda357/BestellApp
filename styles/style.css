@@ -3,11 +3,16 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
-width:100vh;
+width:100vw;
 height:200px;
 }
+
 main{
+    display: flex;
 background-color: rgb(252, 241, 228);
+ height: calc(100vh - 300px);
+  overflow: hidden;
+
 
 }
 #header_section #logo{
@@ -18,13 +23,16 @@ margin: 20px 10px ;
 
 
 #main_section{
-    display: grid;
-    justify-content: start;
-    max-width: 100%;
+   flex: 1;
+   
+    overflow-y: auto;
 }
 
 
+#main_section-header_img{
 
+    display: flex;
+}
 
 
 
@@ -42,7 +50,7 @@ height:200px;
     width: 120px;
     height:120px;
   justify-content: center;
-  margin-left: 450px;
+  margin-left: 350px;
   margin-top: -70px;
     border-radius: 50%;
 }
@@ -82,13 +90,19 @@ color:rgb(26, 26, 26) ;
     color:rgb(29, 27, 24);
       margin-right:  20px;
       margin-left: 10px;
+      
      
    
    
 }
 #menu a:hover{
-border-bottom: 1px solid orange;
+border-bottom: 2px solid orange;
+text-decoration: none;
+ transition: all linear 0.2s;
 }
+
+
+
 
 #menuContainer{
 display: flex;
@@ -176,7 +190,24 @@ font-size: 18px;
     width: 100vh;
 }
 
+#warenkorb_section{
+position: sticky;
+top: 0;
+height: 100vh;
+width: 300px;
+flex-shrink: 0;
+border: 2px solid orangered;
+background-color:rgb(247, 235, 220);
+ border-left: 2px solid orangered;
+  overflow-y: auto;
 
+
+}
+
+#basket{
+
+height: 300px;
+}
 
 footer{
 display: flex;
@@ -187,8 +218,3 @@ width:100vh;
 height:100px;
 }  
 
-
-#footer_section{
-
-
-}
