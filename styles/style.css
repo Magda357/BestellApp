@@ -12,6 +12,9 @@ main{
 background-color: rgb(252, 241, 228);
  height: calc(100vh - 300px);
   overflow: hidden;
+   padding: 0;
+  margin: 0;
+
 
 
 }
@@ -24,7 +27,7 @@ margin: 20px 10px ;
 
 #main_section{
    flex: 1;
-   
+   margin: 0;
     overflow-y: auto;
 }
 
@@ -75,11 +78,12 @@ color:rgb(26, 26, 26) ;
      display: flex;
     flex-direction: row;
      justify-content: start;
- 
     align-items: center;
     margin-top: 20px;
     background-color: rgb(232, 210, 182);
     padding: 10px;
+    max-width: 950px;
+    overflow-y: auto;
 }
 
 
@@ -120,7 +124,8 @@ margin-left: 20px;
     flex-direction: column;
 border: 1px solid rgb(136, 134, 134);
 background-color:rgb(247, 235, 220);
-width:100vh;
+ width: 100%; 
+max-width: 950px;
 gap: 1rem;
 margin-top: 10px;
 flex-wrap: wrap;
@@ -173,7 +178,8 @@ font-size: 18px;
 #menu_pic img{
     object-fit: cover;
     height: 150px;
-    width: 100vh;
+  width: 100%;
+   
 
 }
 
@@ -187,7 +193,8 @@ font-size: 18px;
 #menu_pic_unten img{
     object-fit: cover;
     height: 150px;
-    width: 100vh;
+   width: 100%;
+    max-width: 900px;
 }
 
 #warenkorb_section{
@@ -195,10 +202,8 @@ position: sticky;
 top: 0;
 height: 100vh;
 width: 300px;
-flex-shrink: 0;
-border: 2px solid orangered;
+border: 2px solid rgb(221, 194, 106);
 background-color:rgb(247, 235, 220);
- border-left: 2px solid orangered;
   overflow-y: auto;
 
 
@@ -209,12 +214,45 @@ background-color:rgb(247, 235, 220);
 height: 300px;
 }
 
-footer{
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-width:100vh;
-height:100px;
-}  
+footer {
+  height: 100px;
+  background-color: #d6600f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
 
+#footer_section {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+}
+
+footer * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#basket{
+margin:20px;
+text-decoration: none;
+
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+
+hr {
+border: none;
+height: 2px;
+color: #333;
+background-color: #333;
+}

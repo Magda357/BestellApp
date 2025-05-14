@@ -10,10 +10,10 @@
 
 html, body {
   
-  height: 100%;
-  background-color:#dc6516;
+  height: auto;
+  background-color:#dc16a7;
   overflow: hidden; 
+   overflow-y: hidden;
 }
-
 
     
