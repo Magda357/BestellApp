@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  max-width: 1440px;
   height: 200px;
 }
 
@@ -25,6 +25,7 @@ main {
   flex: 1;
   margin: 0;
   overflow-y: auto;
+  width: calc(100%-300px);
 }
 
 #main_section-header_img {
@@ -65,22 +66,26 @@ main {
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 25px;
+  margin-bottom: 10px;
   background-color: rgb(236, 219, 198);
   padding: 10px;
   width: 100%;
 }
 
-#nav_links a {
+#nav_links button {
   font-size: 26px;
   color: rgb(32, 27, 19);
   margin-right: 20px;
   margin-left: 10px;
+  background: none;
+  margin-bottom: 20px;
 }
-#menu a:hover {
-  border-bottom: 3px solid orange;
+#menu button:hover {
+  border-bottom: 1px solid orange;
   text-decoration: none;
   transition: all linear 0.2s;
+  margin-bottom: 15px;
 }
 
 #menuContainer {
@@ -104,7 +109,6 @@ main {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
- 
 }
 
 .menu-item:hover {
@@ -220,7 +224,7 @@ button:hover {
   top: 20px;
   width: 300px;
   height: 100vh;
-   background: (252, 244, 235);
+  background: (252, 244, 235);
   padding: 10px;
   overflow-y: auto;
   border-left: 1px solid #ccc;
@@ -254,7 +258,6 @@ button:hover {
   padding: 20px;
 }
 
-
 .mobile-basket.hidden {
   display: none;
 }
@@ -271,24 +274,21 @@ button:hover {
     display: none;
   }
 
+  @media (min-width: 751px) {
+    #menuContainer {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
-@media (min-width: 751px) {
-  #menuContainer {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
+    #header_small_bild img {
+      width: 100px;
+      height: 100px;
+    }
+    .menu-item {
+      width: calc(50% - 20px);
+    }
   }
-
-  #header_small_bild img{
-width: 100px;
-height: 100px;
-
-  }
-  .menu-item {
-    width: calc(50% - 20px);
-  }
-}
-
 
   .basket-toggle {
     display: block;
@@ -300,18 +300,23 @@ height: 100px;
 }
 
 @media (max-width: 950px) {
- #header_small_bild img{
-width: 100px;
-height: 100px;
-
- }
- #schoko_image_name{
-  margin-top: 10px;
- }
+  #header_small_bild img {
+    width: 100px;
+    height: 100px;
+  }
+  #schoko_image_name {
+    margin-top: 10px;
+  }
 }
 @media (max-width: 450px) {
   #nav_links a {
     font-size: 20px;
   }
- 
+}
+
+.bestellung-button {
+  padding: 10px 40px;
+  margin: 20px 50px;
+  font-size: 20px;
+  background-color: #ec5a32;
 }

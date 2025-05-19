@@ -1,26 +1,26 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    text-decoration: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  text-decoration: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-html, body {
-  
+html,
+body {
   height: auto;
-  background-color:#da7211;
+  background-color: #da7211;
   overflow-x: hidden;
-   overflow-y: auto;
-   font-size: 22px;
+  overflow-y: auto;
+  font-size: 22px;
 }
 
 #main_section::-webkit-scrollbar,
 #warenkorb_section::-webkit-scrollbar {
   display: none;
 }
-    
+
 #main_section,
 #warenkorb_section {
   scrollbar-width: none; /* Firefox */

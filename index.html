@@ -1,88 +1,95 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="Bestelle leckere Pizzas, Kuchen und Getränke direkt online mit Tasty Food.">
-    <meta name="keywords" content="Pizza, Kuchen, Getränke, Online-Bestellung, Tasty Food">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/standard.css">
-    <link rel="icon" href="./assets/Favicon/favicon.ico">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Bestelle leckere Pizzas, Kuchen und Getränke direkt online mit Tasty Food."
+    />
+    <meta
+      name="keywords"
+      content="Pizza, Kuchen, Getränke, Online-Bestellung, Tasty Food"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/standard.css" />
+    <link rel="icon" href="./assets/Favicon/favicon.ico" />
+    <script type="module" src="./scripts/script.js"></script>
+
     <title>Tasty Food</title>
-</head>
-<body onload="onload()">
-    
-<header>
-    <div id="header_section">
+  </head>
+  <body>
+    <header>
+      <div id="header_section">
+        <div id="logo">
+          <img
+            src="./assets/Logo/Bestell App- Logo.svg"
+            alt="Bestell App Logo"
+          />
+        </div>
+        <div id="korb-btn"></div>
+      </div>
+    </header>
 
-<div id="logo"> <img src="./assets/Logo/Bestell App- Logo.svg" alt="Bestell App Logo"></div>
-<div id="korb-btn"></div>
+    <main>
+      <div id="main_section">
+        <div id="main_section-header">
+          <div id="main_section-header_img">
+            <img
+              src="./assets/dishes/cake-1971548_1280.jpg"
+              alt="Ein Stück Schokoladenkuchen"
+            />
+          </div>
+          <div id="header_small_bild">
+            <img src="./assets/dishes/christmas_2012_new_2857.jpg" alt="logo" />
+          </div>
+        </div>
 
-    </div>
+        <div id="schoko_image_name">Schokotraum Deluxe</div>
+        <div id="bewertung_text">
+          <h4>Bewertung (4.2 von 5 Sternen)</h4>
+        </div>
+        <div id="menu">
+          <nav id="nav_links">
+            <button data-type="pizza">Pizza</button>
+            <button data-type="dessert">Dessert</button>
+            <button data-type="drink">Getränke</button>
+          </nav>
+        </div>
+        <div id="menu_pic">
+          <img src="./assets/dishes/pizza-5275191_1280.jpg" alt="" />
+        </div>
 
-</header>
+        <div id="menuContainer"></div>
 
-<main>
-<div id="main_section">
-    <div id="main_section-header">
-<div id="main_section-header_img">
-    <img src="./assets/dishes/cake-1971548_1280.jpg" alt="Ein Stück Schokoladenkuchen">
-</div>
-<div id="header_small_bild"> 
-    <img src="./assets/dishes/christmas_2012_new_2857.jpg" alt="logo">
-</div>
-    </div>
+        <div id="menu_pic_unten"></div>
+      </div>
 
+      <div id="basket" class="basket">
+        <div id="warenkorb">Warenkorb</div>
+      </div>
 
-<div id="schoko_image_name">Schokotraum Deluxe</div>
-<div id="bewertung_text">
-    <h4>Bewertung (4.2 von 5 Sternen) </h4>
-</div>
-<div id="menu">
-  <nav id="nav_links">
-    <a href="#" onclick="filterMenu('pizza')">Pizzas</a>
-    <a href="#" onclick="filterMenu('dessert')">Kuchen</a>
-    <a href="#" onclick="filterMenu('drink')">Getränke</a>
-</nav>
-</div>
-<div id="menu_pic">
-    <img src="./assets/dishes/pizza-5275191_1280.jpg" alt="" >
-</div>
+      <button
+        id="openBasketBtn"
+        class="basket-toggle"
+        onclick="toggleMobileBasket()"
+      >
+        🛒 Warenkorb
+      </button>
 
-<div id="menuContainer">
+      <div id="mobileBasket" class="mobile-basket hidden">
+        <button onclick="toggleMobileBasket()">✖️ close</button>
+        <div id="mobileBasketContent"></div>
+      </div>
+    </main>
 
-</div>
-
-
-<div id="menu_pic_unten">
-   
-</div>
-
-</div>
-
-
-    
-    <div id="basket" class="basket"> 
-          <div id="warenkorb">Warenkorb</div>
-</div>
-
-  <button id="openBasketBtn" class="basket-toggle" onclick="toggleMobileBasket()">🛒 Warenkorb</button>
-
-  <div id="mobileBasket" class="mobile-basket hidden">
-    <button onclick="toggleMobileBasket()">✖️ close</button>
-    <div id="mobileBasketContent"></div>
-  </div>
-
-
-
-</main>
-
-<footer>
-    <div id="footer_section">
-           <p>&copy; 2025 Tasty Food – Alle Rechte vorbehalten</p>
-    </div>
-</footer>
-<script src="./scripts/script.js" ></script>
-</body>
+    <footer>
+      <div id="footer_section">
+        <p>&copy; 2025 Tasty Food – Alle Rechte vorbehalten</p>
+      </div>
+    </footer>
+  </body>
 </html>
