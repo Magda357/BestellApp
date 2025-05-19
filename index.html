@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Bestelle leckere Pizzas, Kuchen und Getränke direkt online mit Tasty Food.">
+    <meta name="keywords" content="Pizza, Kuchen, Getränke, Online-Bestellung, Tasty Food">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="icon" href="./assets/Favicon/favicon.ico">
-    <script src="./scripts/script.js"></script>
+    
     <title>Tasty Food</title>
 </head>
 <body onload="onload()">
@@ -25,25 +27,24 @@
 <div id="main_section">
     <div id="main_section-header">
 <div id="main_section-header_img">
-    <img src="./assets/dishes/cake-1971548_1280.jpg" alt="">
+    <img src="./assets/dishes/cake-1971548_1280.jpg" alt="Ein Stück Schokoladenkuchen">
 </div>
 <div id="header_small_bild"> 
-    <img src="./assets/dishes/christmas_2012_new_2857.jpg" alt="">
+    <img src="./assets/dishes/christmas_2012_new_2857.jpg" alt="logo">
 </div>
     </div>
 
 
-<div id="schoko_image_name"><p>Schokotraum Deluxe</p></div>
+<div id="schoko_image_name">Schokotraum Deluxe</div>
 <div id="bewertung_text">
-    <h4>Bewertung(4.2 von 5 Sternen) </h4>
+    <h4>Bewertung (4.2 von 5 Sternen) </h4>
 </div>
 <div id="menu">
-    <div id="nav_links"> 
-       
+  <nav id="nav_links">
     <a href="#" onclick="filterMenu('pizza')">Pizzas</a>
-   <a href="#" onclick="filterMenu('dessert')"> Kuchen</a>
-    <a href="#" onclick="filterMenu('drink')">Getränke </a>
-</div>
+    <a href="#" onclick="filterMenu('dessert')">Kuchen</a>
+    <a href="#" onclick="filterMenu('drink')">Getränke</a>
+</nav>
 </div>
 <div id="menu_pic">
     <img src="./assets/dishes/pizza-5275191_1280.jpg" alt="" srcset="">
@@ -55,15 +56,25 @@
 
 
 <div id="menu_pic_unten">
-    <img src="./assets/dishes/cocktail-7952751_1920.jpg" alt="" srcset="">
+   
 </div>
 
 </div>
 
-<div id="warenkorb_section"><span id="bsk">Warenkorb</span>
-    <div id="basket"></div>
 
+    
+    <div id="basket" class="basket"> 
+        <div>Warenkorb</div>
 </div>
+
+  <button id="openBasketBtn" class="basket-toggle" onclick="toggleMobileBasket()">🛒 Warenkorb</button>
+
+  <div id="mobileBasket" class="mobile-basket hidden">
+    <button onclick="toggleMobileBasket()">✖️ close</button>
+    <div id="mobileBasketContent"></div>
+  </div>
+
+
 
 </main>
 
@@ -72,6 +83,6 @@
            <p>&copy; 2025 Tasty Food – Alle Rechte vorbehalten</p>
     </div>
 </footer>
-
+<script src="./scripts/script.js" ></script>
 </body>
 </html>

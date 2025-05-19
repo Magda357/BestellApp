@@ -117,21 +117,21 @@ const menuItems= [
 
 
 function onload() { 
-filterMenu('pizza'); //Երբ էջը բացվում է, այս ֆունկցիան ցույց է տալիս միայն պիցցաները։
+filterMenu('pizza'); 
 
 }
   function filterMenu(type) {
-  const container = document.getElementById("menuContainer"); //Այս ֆունկցիան վերցնում է ապրանքների ամբողջական ցուցակը 
+  const container = document.getElementById("menuContainer"); 
 
-  const filtered = menuItems.filter(item => item.type === type);//և թողնում միայն այն ապրանքները, որոնք համապատասխանում են տրված տեսակի (pizza, dessert, drink)։
+  const filtered = menuItems.filter(item => item.type === type);
 
-  const html = filtered.map((item, index) => `
+  const html = filtered.map((item) => `
     <div class="menu-item">
-    <a href="#" onclick="warenKorb('${item.name}')"> 
+    <a href="#" onclick="addToBasket('${item.name}')"> 
       <h3><strong>${item.name}</strong></h3>
       <p>${item.description}</p>
       <strong class="price">${item.price.toFixed(2)} €</strong>
-      <div class="plus last">
+      <div class="plus-last">
         
           <img src="./assets/Favicon/plus.png" alt="" class="plus-image">
         
@@ -143,49 +143,60 @@ filterMenu('pizza'); //Երբ էջը բացվում է, այս ֆունկցիա�
   container.innerHTML = html;
 }
 
-function warenKorb(name) {
-  const item = menuItems.find(i => i.name.trim() === name.trim());//որոնում ենք ամբողջ մենյուում այն ապրանքը, որի անունը համընկնում է տրված անվան հետ։
+function addToBasket(name) {
+  const item = menuItems.find(i => i.name.trim() === name.trim()); 
   if (!item) return;
 
-  const existingItem = basketItems.find(i => i.name === item.name); //Ստուգում ենք՝ արդյո՞ք ապրանքը արդեն զամբյուղում կա։
+  const existingItem = basketItems.find(i => i.name === item.name); 
   if (existingItem) {
-    existingItem.quantity += 1; //Եթե կա՝ Քանակը 1-ով ավելացնում ենք։
+    existingItem.quantity += 1; 
+
+
   } else {
-    basketItems.push({ ...item, quantity: 1 }); //Ավելացնում ենք նոր ապրանք՝ quantity: 1 հատկությամբ։
+    basketItems.push({ ...item, quantity: 1 });
   }
 
-  renderBasket(); // Թարմացնում ենք զամբյուղի ցուցադրումը։
+  renderBasket(); 
 }
 
 function renderBasket() {
   const basket = document.getElementById("basket");
+const mobileBasket = document.getElementById("mobileBasketContent");
 
   if (basketItems.length === 0) {
     basket.innerHTML = "<p>Basket is empty.</p>";
+      mobileBasketContent.innerHTML = "<p>Der Warenkorb ist leer.</p>";
     return;
   }
 
   let html = "<ul>";
-  let total = 0;
-
+    let subtotal = 0;
   basketItems.forEach(item => {
     const itemTotal = item.price * item.quantity;
-    total += itemTotal;
+    subtotal += itemTotal;
 
     html += `
-      
+      <li>
         ${item.name} - ${item.price.toFixed(2)}€ x ${item.quantity} = ${itemTotal.toFixed(2)}€
-        <li><button onclick="decreaseQuantity('${item.name}')">➖</button>
-        <button onclick="increaseQuantity('${item.name}')">➕</button>
-        <button onclick="removeFromBasket('${item.name}')">🗑️</button>
+        <button onclick="decreaseQuantity('${item.name}')" aria-label="Weniger ${item.name}">➖</button>
+        <button onclick="increaseQuantity('${item.name}')" aria-label="Mehr ${item.name}">➕</button>
+        <button onclick="removeFromBasket('${item.name}')" aria-label="${item.name} aus dem Warenkorb entfernen">🗑️</button>
       </li>
     `;
   });
 
-  html += "</ul>";
-  html  += `<span id="hr"></span> `;
-  html += `<p><strong>Total: ${total.toFixed(2)}€</strong></p>`;
+    html += "</ul><div id='hr'></div><div>Lieferung ab 50€ kostenlos</div>";
+
+  let deliveryCharge = subtotal < 50 ? 5.94 : 0;
+  let total = subtotal + deliveryCharge;
+
+  html += `<p><strong>Gesamt: ${total.toFixed(2)}€</strong></p>`;
+  if (deliveryCharge > 0) {
+    html += `<p>Enthält Lieferkosten: 5.94€</p>`;
+  }
+
   basket.innerHTML = html;
+  mobileBasket.innerHTML = html;
 }
 
 function increaseQuantity(name) {
@@ -201,7 +212,7 @@ function decreaseQuantity(name) {
   if (index > -1) {
     basketItems[index].quantity -= 1;
     if (basketItems[index].quantity <= 0) {
-      basketItems.splice(index, 1); // Ջնջում է, եթե քանակը 0-ից պակաս է
+      basketItems.splice(index, 1); 
     }
     renderBasket();
   }
@@ -214,4 +225,11 @@ function removeFromBasket(name) {
     renderBasket();
   }
 }
+
+ function toggleMobileBasket() {
+      const mobileBasket = document.getElementById("mobileBasket");
+      mobileBasket.classList.toggle("hidden");
+      mobileBasket.classList.toggle("visible");
+    }
+
 
