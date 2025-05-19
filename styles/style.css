@@ -104,6 +104,7 @@ main {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
+ 
 }
 
 .menu-item:hover {
@@ -298,3 +299,19 @@ height: 100px;
   border-bottom: 1px solid #ccc;
 }
 
+@media (max-width: 950px) {
+ #header_small_bild img{
+width: 100px;
+height: 100px;
+
+ }
+ #schoko_image_name{
+  margin-top: 10px;
+ }
+}
+@media (max-width: 450px) {
+  #nav_links a {
+    font-size: 20px;
+  }
+ 
+}

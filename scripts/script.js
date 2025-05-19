@@ -117,6 +117,7 @@ const menuItems= [
 
 
 function onload() { 
+  loadBasketFromStorage();
 filterMenu('pizza'); 
 
 }
@@ -157,6 +158,7 @@ function addToBasket(name) {
   }
 
   renderBasket(); 
+   saveBasketToStorage();
 }
 
 function renderBasket() {
@@ -164,7 +166,7 @@ function renderBasket() {
 const mobileBasket = document.getElementById("mobileBasketContent");
 
   if (basketItems.length === 0) {
-    basket.innerHTML = "<p>Basket is empty.</p>";
+    basket.innerHTML = "<p>Der Warenkorb ist leer</p>";
       mobileBasketContent.innerHTML = "<p>Der Warenkorb ist leer.</p>";
     return;
   }
@@ -174,8 +176,10 @@ const mobileBasket = document.getElementById("mobileBasketContent");
   basketItems.forEach(item => {
     const itemTotal = item.price * item.quantity;
     subtotal += itemTotal;
+    html += ``
 
     html += `
+   
       <li>
         ${item.name} - ${item.price.toFixed(2)}€ x ${item.quantity} = ${itemTotal.toFixed(2)}€
         <button onclick="decreaseQuantity('${item.name}')" aria-label="Weniger ${item.name}">➖</button>
@@ -186,13 +190,13 @@ const mobileBasket = document.getElementById("mobileBasketContent");
   });
 
     html += "</ul><div id='hr'></div><div>Lieferung ab 50€ kostenlos</div>";
-
-  let deliveryCharge = subtotal < 50 ? 5.94 : 0;
+   let Lieferkosten = 5.99;
+  let deliveryCharge = subtotal < 50 ? Lieferkosten : 0;
   let total = subtotal + deliveryCharge;
 
   html += `<p><strong>Gesamt: ${total.toFixed(2)}€</strong></p>`;
   if (deliveryCharge > 0) {
-    html += `<p>Enthält Lieferkosten: 5.94€</p>`;
+    html += `<p>Enthält Lieferkosten: 5.99 €</p>`;
   }
 
   basket.innerHTML = html;
@@ -204,6 +208,7 @@ function increaseQuantity(name) {
   if (item) {
     item.quantity += 1;
     renderBasket();
+     saveBasketToStorage();
   }
 }
 
@@ -215,6 +220,7 @@ function decreaseQuantity(name) {
       basketItems.splice(index, 1); 
     }
     renderBasket();
+     saveBasketToStorage();
   }
 }
 
@@ -223,6 +229,7 @@ function removeFromBasket(name) {
   if (index > -1) {
     basketItems.splice(index, 1);
     renderBasket();
+     saveBasketToStorage();
   }
 }
 
@@ -233,3 +240,15 @@ function removeFromBasket(name) {
     }
 
 
+function saveBasketToStorage() {
+  localStorage.setItem('basket', JSON.stringify(basketItems));
+}
+
+function loadBasketFromStorage() {
+  const stored = localStorage.getItem('basket');
+  if (stored) {
+    basketItems.length = 0; 
+    JSON.parse(stored).forEach(item => basketItems.push(item));
+    renderBasket(); 
+  }
+}
